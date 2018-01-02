@@ -28,24 +28,60 @@ namespace Summary
 
         public bool IsUpgraded()
         {
+            bool response = new bool();
+            int numberOfUpgradedRegisters = 0;
             foreach (POS register in Registers)
             {
-                int numberOfUpgradedRegisters = 0;
+                
                 if (register.IsUpgraded())
                 {
                     numberOfUpgradedRegisters++;
                 }
                 
             }
-            this.NumberOfUpgradedRegisters = NumberOfUpgradedRegisters;
+            
+            if (numberOfUpgradedRegisters == NumberOfUpgradedRegisters && numberOfUpgradedRegisters != 0)
+            {
+                response = true;
+            }
+            else
+            {
+                response = false;
+            }
 
-            return NumberOfUpgradedRegisters == NumberOfUpgradedRegisters;
+            this.NumberOfUpgradedRegisters = numberOfUpgradedRegisters;
+            return response;
             
   
         }
+        public string UpgradeStatus()
+        {
+            string response = "";
+            bool upgradeStatus = this.IsUpgraded();
+            if (upgradeStatus == true)
+            {
+                response = "Success";
+            }
+            if (upgradeStatus == false)
+            {
+                int numberOfFailedPosUprades = NumberOfRegisters - NumberOfUpgradedRegisters;
+                response = "FAILURE: " + numberOfFailedPosUprades.ToString() + " registers were not upgraded.";
+            }
+            return response;
+        }
+
+
         public override string ToString()
         {
+            string upgradeStatus = this.UpgradeStatus();
+            string storeNumber = StoreNumber.ToString();
+            string numberOfRegisters = NumberOfRegisters.ToString();
             
+            string numberOfUpgradedRegisters = NumberOfUpgradedRegisters.ToString();
+
+            string response = string.Format("Store Number: {0} \n Number of registers: {1} \n Number of Upgraded registers {2} \n Upgrade Status= {3}", storeNumber, numberOfRegisters, numberOfUpgradedRegisters, upgradeStatus);
+
+            return response;
         }
     }
 }
