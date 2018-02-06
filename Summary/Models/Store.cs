@@ -8,6 +8,7 @@ namespace Summary
 {
     class Store
     {
+        public int XcellRowID { get; set; }
         public int StoreNumber { get; set; }
         public int NumberOfRegisters { get; set; }
         public int NumberOfUpgradedRegisters { get; set; }
@@ -28,7 +29,6 @@ namespace Summary
 
         public bool IsUpgraded()
         {
-            bool response = new bool();
             int numberOfUpgradedRegisters = 0;
             foreach (POS register in Registers)
             {
@@ -39,21 +39,12 @@ namespace Summary
                 }
                 
             }
-            
-            if (numberOfUpgradedRegisters == NumberOfUpgradedRegisters && numberOfUpgradedRegisters != 0)
-            {
-                response = true;
-            }
-            else
-            {
-                response = false;
-            }
-
             this.NumberOfUpgradedRegisters = numberOfUpgradedRegisters;
-            return response;
-            
-  
+
+            return numberOfUpgradedRegisters == this.NumberOfRegisters;
         }
+
+
         public string UpgradeStatus()
         {
             string response = "";
@@ -65,7 +56,7 @@ namespace Summary
             if (upgradeStatus == false)
             {
                 int numberOfFailedPosUprades = NumberOfRegisters - NumberOfUpgradedRegisters;
-                response = "FAILURE: " + numberOfFailedPosUprades.ToString() + " registers were not upgraded.";
+                response = "FAILURE: " + numberOfFailedPosUprades.ToString()+ "/" + NumberOfRegisters + " pos failed the upgrade.";
             }
             return response;
         }
