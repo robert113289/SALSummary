@@ -257,9 +257,9 @@ namespace Summary
             scriptProc.StartInfo.FileName = @"cscript";
             scriptProc.StartInfo.WorkingDirectory = @"X:\Group\Information Technology\Host Support\EMV QC and Contactless\Status Report\"; //<---very important 
             scriptProc.StartInfo.Arguments = "//B //Nologo Step2_CopyFiles.vbs";
-            scriptProc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden; //prevent console window from popping up
+            scriptProc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden; 
             scriptProc.Start();
-            scriptProc.WaitForExit(); // <-- Optional if you want program running until your script exit
+            scriptProc.WaitForExit(); 
             scriptProc.Close();
 
             string message1 = "Step2_CopyFiles.vbs file executed !!";

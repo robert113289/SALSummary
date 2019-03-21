@@ -22,7 +22,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -60,9 +60,6 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -76,7 +73,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\StoreDbContext.cs" />
-    <Compile Include="Functions\ExecuteCMD.cs" />
     <Compile Include="Models\POS.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -84,14 +80,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
-    <None Include="Summary_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Step2_CopyFiles.vbs" />
-    <Content Include="Summarydb.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="ADODB">
